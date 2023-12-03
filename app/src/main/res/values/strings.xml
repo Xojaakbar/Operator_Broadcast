@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Operator</string>
+    <string name="screen_on">Screen on</string>
+    <string name="screen_off">Screen off</string>
+    <string name="power_connected">Power Connected</string>
+    <string name="power_disconnected">Power Disconnected</string>
+    <string name="device_storage_low">Device storage low</string>
+    <string name="airplane_mode_changed">Airplane mode changed</string>
+    <string name="battery_ok">Battery ok</string>
+    <string name="battery_low">Battery low</string>
+    <string name="action_shutdown">Action shutdown</string>
+    <string name="action_timezone_changed">Action timezone changed</string>
+    <string name="action_time_changed">Action time changed</string>
+    <string name="action_date_changed">Action date changed</string>
+</resources>
