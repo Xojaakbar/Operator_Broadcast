@@ -55,15 +55,15 @@ class SharedPref private constructor() {
         }
         fun getBatareyafull():Boolean = pref.getBoolean("Batareyafull",false)
 
-        fun putEkranOn(state: Boolean) {
+        fun putScreenOn(state: Boolean) {
             editor.putBoolean("EkranOn", state).apply()
         }
-        fun getEkranOn():Boolean = pref.getBoolean("EkranOn",false)
+        fun getScreenOn():Boolean = pref.getBoolean("EkranOn",false)
 
-        fun putEkranOff(state: Boolean) {
+        fun putScreenOff(state: Boolean) {
             editor.putBoolean("EkranOff", state).apply()
         }
-        fun getEkranOff():Boolean = pref.getBoolean("EkranOff",false)
+        fun getScreenOff():Boolean = pref.getBoolean("EkranOff",false)
 
         fun putZaryadkagaqoyganda(state: Boolean) {
             editor.putBoolean("Zaryadkagaqoyganda", state).apply()

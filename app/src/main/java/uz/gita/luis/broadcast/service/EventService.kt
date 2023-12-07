@@ -16,8 +16,8 @@ import uz.gita.luis.broadcast.R
 import uz.gita.luis.broadcast.data.local.SharedPref
 import uz.gita.luis.broadcast.receiver.Batareyafull
 import uz.gita.luis.broadcast.receiver.Batareyakam
-import uz.gita.luis.broadcast.receiver.EkranOff
-import uz.gita.luis.broadcast.receiver.EkranOn
+import uz.gita.luis.broadcast.receiver.ScreenOff
+import uz.gita.luis.broadcast.receiver.ScreenOn
 import uz.gita.luis.broadcast.receiver.Pilot
 import uz.gita.luis.broadcast.receiver.Zaryaddansugurganda
 import uz.gita.luis.broadcast.receiver.Zaryadkagaqoyganda
@@ -39,14 +39,13 @@ class EventService: Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createChannel()
         }
-
         createNotificationAndStartService()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when(intent?.extras?.getString("ACTION")) {
             Batareyakam.ACTION -> {
-                if (sharedpref.getBatareyakam()) {
+                if (!sharedpref.getBatareyakam()) {
                     try {
                         sharedpref.putBatareyakam(false)
                         unregisterReceiver(Batareyakam)
@@ -62,7 +61,7 @@ class EventService: Service() {
             }
 
             Batareyafull.ACTION -> {
-                if (sharedpref.getBatareyafull()){
+                if (!sharedpref.getBatareyafull()){
                     try {
                         sharedpref.putBatareyafull(false)
                         unregisterReceiver(Batareyafull)
@@ -77,7 +76,7 @@ class EventService: Service() {
                 }
             }
             Zaryadkagaqoyganda.ACTION -> {
-                if (sharedpref.getZaryadkagaqoyganda()){
+                if (!sharedpref.getZaryadkagaqoyganda()){
                     try {
                         sharedpref.putZaryadkagaqoyganda(false)
                         unregisterReceiver(Zaryadkagaqoyganda)}
@@ -91,7 +90,7 @@ class EventService: Service() {
                 }
             }
             Zaryaddansugurganda.ACTION -> {
-                if (sharedpref.getZaryaddansugurganda()){
+                if (!sharedpref.getZaryaddansugurganda()){
                     try {
                         sharedpref.putZaryaddansugurganda(false)
                         unregisterReceiver(Zaryaddansugurganda)}
@@ -104,35 +103,35 @@ class EventService: Service() {
                     sharedpref.putZaryaddansugurganda(false)
                 }
             }
-            EkranOn.ACTION -> {
-                if (sharedpref.getEkranOn()){
+            ScreenOn.ACTION -> {
+                if (!sharedpref.getScreenOn()){
                     try {
-                        sharedpref.putEkranOn(false)
-                        unregisterReceiver(EkranOn)}
+                        sharedpref.putScreenOn(false)
+                        unregisterReceiver(ScreenOn)}
                     catch (e:Exception){}
 
                 } else{
-                    registerReceiver(EkranOn,IntentFilter().apply {
-                        addAction(EkranOn.ACTION)
+                    registerReceiver(ScreenOn,IntentFilter().apply {
+                        addAction(ScreenOn.ACTION)
                     })
-                    sharedpref.putEkranOn(false)
+                    sharedpref.putScreenOn(false)
                 }
             }
-            EkranOff.ACTION -> {
-                if (sharedpref.getEkranOff()){
+            ScreenOff.ACTION -> {
+                if (!sharedpref.getScreenOff()){
                     try {
-                        sharedpref.putEkranOff(false)
-                        unregisterReceiver(EkranOff)}
+                        sharedpref.putScreenOff(false)
+                        unregisterReceiver(ScreenOff)}
                     catch (e:Exception){}
                 } else{
-                    registerReceiver(EkranOff,IntentFilter().apply {
-                        addAction(EkranOff.ACTION)
+                    registerReceiver(ScreenOff,IntentFilter().apply {
+                        addAction(ScreenOff.ACTION)
                     })
-                    sharedpref.putEkranOff(false)
+                    sharedpref.putScreenOff(false)
                 }
             }
             Pilot.ACTION -> {
-                if (sharedpref.getPilot()){
+                if (!sharedpref.getPilot()){
                     try {
                         sharedpref.putPilot(false)
                         unregisterReceiver(Pilot)}
@@ -230,12 +229,12 @@ class EventService: Service() {
 
         }
         try {
-            unregisterReceiver(EkranOff)
+            unregisterReceiver(ScreenOff)
         } catch (e:Exception){
 
         }
         try {
-            unregisterReceiver(EkranOn)
+            unregisterReceiver(ScreenOn)
         } catch (e:Exception){
 
         }

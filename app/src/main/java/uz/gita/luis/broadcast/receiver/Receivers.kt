@@ -4,8 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.NetworkInfo
-import android.net.wifi.WifiManager
 import android.util.Log
 import uz.gita.luis.broadcast.R
 import uz.gita.luis.broadcast.data.local.SharedPref
@@ -114,7 +112,7 @@ object Zaryaddansugurganda : BroadcastReceiver() {
     }
 }
 
-object EkranOn : BroadcastReceiver() {
+object ScreenOn : BroadcastReceiver() {
 
     const val ACTION = Intent.ACTION_SCREEN_ON
 
@@ -129,7 +127,7 @@ object EkranOn : BroadcastReceiver() {
     }
 }
 
-object EkranOff : BroadcastReceiver() {
+object ScreenOff : BroadcastReceiver() {
 
     const val ACTION = Intent.ACTION_SCREEN_OFF
 
